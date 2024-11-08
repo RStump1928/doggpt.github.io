@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DogGPT</title>
+</head>
+
+<body>
+    <header>
+        <h2>Type a question and the doge will answer! :3</h2>
+    </header>
+    <div class="submit">
+        <input id="questionInput" placeholder="Type question..." type="text">
+        <button type="submit"  onclick="askDoge()">Ask</button>
+</div>
+<script> const responses = [
+    "Bark bark! I'm not sure, but I love treats!",
+    "Ruff! Let's go for a walk instead!",
+    "Woof! Can I have a belly rub?",
+    "Bark! I just want to play fetch!",
+    "Woof woof! Did you say snack?",
+    "Ruff! I'm here for cuddles!",
+    "Bark! Let's chase some squirrels!",
+    "Bork! I hate cats!",
+    "Arf! Treat? For me?",
+    "Firetruck?! AAWOOOO!",
+    "Arf! My name is Rufus!"
+    ];
+
+function getRandomResponse() {
+    const randomIndex = Math.floor(Math.random() * responses.length);
+    return responses[randomIndex];
+}
+
+function askDoge() {
+    const questionInput = document.getElementById('questionInput');
+    const dogeResponse = document.getElementById('dogeResponse');
+
+    if (questionInput.value.trim()) {
+        dogeResponse.innerText = "Thinking...";
+        dogeResponse.style.display = "block";
+        setTimeout(() => {
+            dogeResponse.innerText = getRandomResponse();
+        }, 2000);
+    } else {
+        dogeResponse.innerText = "Woof! Please ask me something!";
+        dogeResponse.style.display = "block";
+    }
+}
+
+function updateQuestionList() {
+    const questionList = document.getElementById('questionList');
+    questionList.innerHTML = '';
+
+    questions.forEach((q) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = q;
+        questionList.appendChild(listItem);
+    });
+}
+</script>
+
+    <div class="main">
+        <div class="dog">
+            <div class="dog__paws">
+                <div class="dog__bl-leg leg">
+                    <div class="dog__bl-paw paw"></div>
+                    <div class="dog__bl-top top"></div>
+                </div>
+                <div class="dog__fl-leg leg">
+                    <div class="dog__fl-paw paw"></div>
+                    <div class="dog__fl-top top"></div>
+                </div>
+                <div class="dog__fr-leg leg">
+                    <div class="dog__fr-paw paw"></div>
+                    <div class="dog__fr-top top"></div>
+                </div>
+            </div>
+
+            <div class="dog__body">
+                <div class="dog__tail"></div>
+            </div>
+
+            <div class="dog__head">
+                <div class="dog__snout">
+                    <div class="dog__nose"></div>
+                    <div class="dog__eyes">
+                        <div class="dog__eye-l"></div>
+                        <div class="dog__eye-r"></div>
+                    </div>
+                </div>
+                <div class="dog-response-container">
+                    <div id="dogeResponse" class="dog-response" style="display: none;"></div>
+                </div>
+            </div>
+
+            <div class="dog__head-c">
+                <div class="dog__ear-l"></div>
+                <div class="dog__ear-r"></div>
+            </div>
+        </div>
+    </div>
+    <footer><a href="https://github.com/RStump1928" target="_blank">Made by: github.com/RStump1928</a></footer>
+</body>
+</html>
